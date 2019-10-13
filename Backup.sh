@@ -53,7 +53,7 @@ restore () {
   sudo apt install -f -y
 
   #cleanup
-  sudo rm -rf anaconda.sh atom.deb chrome.deb dbeaver.deb skylinux.deb vmware-client.bundle displaylink.zip "DisplayLink\ USB\ Graphics\ Software\ for\ Ubuntu\ 5.2.zip"
+  sudo rm -rf *.deb anaconda.sh vmware-client.bundle
 }
 
 
