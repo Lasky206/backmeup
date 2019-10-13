@@ -22,20 +22,17 @@ restore () {
   sudo apt dist-upgrade -y
 
   #fetch packages
-  wget -O atom.deb https://atom.io/download/deb
-  wget -O dbeaver.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
-  wget -O skylinux.deb https://www.tel.red/linux.php?f=sky_2.1.7458-1ubuntu%2Bbionic_amd64.deb
-  wget -O chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  wget -O displaylink.zip https://www.displaylink.com/downloads/file?id=1369
+  wget https://atom.io/download/deb
+  wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+  wget https://www.tel.red/linux.php?f=sky_2.1.7458-1ubuntu%2Bbionic_amd64.deb
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  # wget -O displaylink.zip https://www.displaylink.com/downloads/file?id=1369
 
   wget -O vmware-client.bundle https://download3.vmware.com/software/view/viewclients/CART20FQ3/VMware-Horizon-Client-5.2.0-14604769.x64.bundle
   wget -O anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh
 
   #install packages
-  sudo dpkg -i atom.deb
-  sudo dpkg -i dbeaver.deb
-  sudo dpkg -i skylinux.deb
-  sudo dpkg -i chrome.deb
+  sudo dpkg -i *.deb
 
   unzip displaylink.zip
 
@@ -47,7 +44,7 @@ restore () {
   ./vmware-client.bundle
   ./anaconda.sh
 
-  sudo apt install utop -y
+  sudo apt install gnome-tweaks
   sudo snap install remmina
 
   apm install monokai@0.24.0
