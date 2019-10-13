@@ -25,17 +25,17 @@ restore () {
   wget -O atom.deb https://atom.io/download/deb
   wget -O dbeaver.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
   wget -O skylinux.deb https://www.tel.red/linux.php?f=sky_2.1.7458-1ubuntu%2Bbionic_amd64.deb
-  wget -O chrome.deb https://www.google.com/chrome/thank-you.html?statcb=0&installdataindex=empty&defaultbrowser=0#
+  wget -O chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   wget -O displaylink.zip https://www.displaylink.com/downloads/file?id=1369
 
   wget -O vmware-client.bundle https://download3.vmware.com/software/view/viewclients/CART20FQ3/VMware-Horizon-Client-5.2.0-14604769.x64.bundle
   wget -O anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh
 
   #install packages
-  sudo dpkg -i install atom.deb -y
-  sudo dpkg -i install dbeaver.deb -y
-  sudo dpkg -i install skylinux.deb -y
-  sudo dpkg -i install chrome.deb -y
+  sudo dpkg -i atom.deb
+  sudo dpkg -i dbeaver.deb
+  sudo dpkg -i skylinux.deb
+  sudo dpkg -i chrome.deb
 
   unzip displaylink.zip
 
