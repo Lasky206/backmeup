@@ -5,8 +5,10 @@ backup () {
   #obtain backup destination
   read -p 'Where would you like to save the backup to?: ' backup_path
   #backup system
+  echo 'By default Documents, Pictures, and .ssh will be backed up'
+  read -p 'List additional backup sources seperated by spaces in quotation marks (e.g. "~/folder_1 ~/folder_2")' sources
   cd $backup_path
-  tar -cvf Backup.tar ~/Documents ~/Pictures ~/.ssh
+  tar -cvf Backup.tar ~/Documents ~/Pictures ~/.ssh $sources
   gzip Backup.tar
 }
 
@@ -36,8 +38,6 @@ restore () {
   #install packages
   sudo dpkg -i *.deb
 
-  unzip displaylink.zip
-
   chmod 777 vmware-client.bundle
   chmod 777 anaconda.sh
 
@@ -46,6 +46,7 @@ restore () {
 
   sudo apt install git
   sudo apt install gnome-tweaks
+  sudo apt install openconnect
   sudo snap install remmina
 
   #configure git
