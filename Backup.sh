@@ -66,6 +66,7 @@ restore () {
   apm install monokai@0.24.0
   apm install city-lights-icons@1.1.1
 
+  #repair missing dependencies
   sudo apt install -f -y
 
   #cleanup
