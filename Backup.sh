@@ -6,7 +6,8 @@ backup () {
   read -p 'Where would you like to save the backup to?: ' backup_path
   #backup system
   echo 'By default Documents, Pictures, and .ssh will be backed up'
-  read -p 'List additional backup sources seperated by spaces in quotation marks (e.g. "~/folder_1 ~/folder_2")' sources
+  read -p 'List the full path to additional sources: ' sources
+
   cd $backup_path
   tar -cvf Backup.tar ~/Documents ~/Pictures ~/.ssh $sources
   gzip Backup.tar
@@ -15,6 +16,13 @@ backup () {
 
 #restore fucntion
 restore () {
+  #prompt for recovery file
+  echo 'Place the backup tarball in the root of your user folder (i.e. ~/)'
+  echo ''
+  read -n 1 -s -r -p 'Press any key to continue'
+  gunzip Backup.tar.gz
+  tar -xf Backup.tar
+
   #navigate to executions location
   cd ~/
 
@@ -44,10 +52,10 @@ restore () {
   ./vmware-client.bundle
   ./anaconda.sh
 
-  sudo apt install git
-  sudo apt install gnome-tweaks
-  sudo apt install openconnect
-  sudo snap install remmina
+  sudo apt install git -y
+  sudo apt install gnome-tweaks -y
+  sudo apt install openconnect -y
+  sudo snap install remmina -y
 
   #configure git
   git config --global user.name 'Lasky206'
