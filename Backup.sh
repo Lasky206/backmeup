@@ -56,7 +56,7 @@ restore () {
   sudo apt install git -y
   sudo apt install gnome-tweaks -y
   sudo apt install openconnect -y
-  sudo snap install remmina -y
+  sudo snap install remmina
 
   #configure git
   git config --global user.name 'Lasky206'
