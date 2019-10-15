@@ -37,7 +37,7 @@ restore () {
   #fetch packages
   wget -O atom.deb https://atom.io/download/deb
   wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
-  wget -O skylinux.deb 'https://www.tel.red/linux.php?f=sky_2.1.7458-1ubuntu%2Bbionic_amd64.deb'
+  wget -O skylinux.deb 'https://www.tel.red/linux.php?f=sky_2.1.7458-1ubuntu%2Bdisco_amd64.deb'
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   wget https://discordapp.com/api/download?platform=linux&format=deb
 
@@ -68,6 +68,9 @@ restore () {
 
   #repair missing dependencies
   sudo apt install -f -y
+  
+  #remove un-used dependencies
+  sudo apt autoremove -y
 
   #cleanup
   sudo rm -rf *.deb anaconda.sh vmware-client.bundle
