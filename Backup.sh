@@ -31,15 +31,11 @@ restore () {
   sudo apt upgrade -y
   sudo apt dist-upgrade -y
 
-  #open download pages
-  firefox https://www.displaylink.com/downloads/ubuntu
-
   #fetch packages
   wget -O atom.deb https://atom.io/download/deb
   wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
   wget -O skylinux.deb 'https://www.tel.red/linux.php?f=sky_2.1.7458-1ubuntu%2Bdisco_amd64.deb'
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  wget -O discord.deb 'https://discordapp.com/api/download?platform=linux&format=deb'
 
   wget -O vmware-client.bundle https://download3.vmware.com/software/view/viewclients/CART20FQ3/VMware-Horizon-Client-5.2.0-14604769.x64.bundle
   wget -O anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh
@@ -47,16 +43,24 @@ restore () {
   #install packages
   sudo dpkg -i *.deb
 
+  #open download pages
+  firefox https://www.displaylink.com/downloads/ubuntu
+
+  #launch chrome
+  google-chrome
+
   chmod 777 vmware-client.bundle
   chmod 777 anaconda.sh
 
-  ./vmware-client.bundle
+  mv vmware-client.bundle ~/Download
   ./anaconda.sh
 
   sudo apt install git -y
   sudo apt install gnome-tweaks -y
   sudo apt install openconnect -y
+  sudo apt install dkms -y
   sudo snap install remmina
+  sudo snap install discord
 
   #configure git
   git config --global user.name 'Lasky206'
@@ -68,12 +72,12 @@ restore () {
 
   #repair missing dependencies
   sudo apt install -f -y
-  
+
   #remove un-used dependencies
   sudo apt autoremove -y
 
   #cleanup
-  sudo rm -rf *.deb anaconda.sh vmware-client.bundle
+  sudo rm -rf *.deb anaconda.sh
 }
 
 
