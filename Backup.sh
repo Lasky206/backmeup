@@ -35,7 +35,7 @@ restore () {
   firefox https://www.displaylink.com/downloads/ubuntu
 
   #fetch packages
-  wget https://atom.io/download/deb
+  wget -O atom.deb https://atom.io/download/deb
   wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
   wget https://www.tel.red/linux.php?f=sky_2.1.7458-1ubuntu%2Bbionic_amd64.deb
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
