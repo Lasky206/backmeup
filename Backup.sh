@@ -39,6 +39,7 @@ restore () {
   wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
   wget https://www.tel.red/linux.php?f=sky_2.1.7458-1ubuntu%2Bbionic_amd64.deb
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  wget https://discordapp.com/api/download?platform=linux&format=deb
 
   wget -O vmware-client.bundle https://download3.vmware.com/software/view/viewclients/CART20FQ3/VMware-Horizon-Client-5.2.0-14604769.x64.bundle
   wget -O anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh
