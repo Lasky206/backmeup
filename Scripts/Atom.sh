@@ -2,8 +2,8 @@
 
 #Prompt for dependencies before continue
 
-wget -P /tmp/ -O atom.deb https://github.com/atom/atom/releases/download/v1.41.0/atom-amd64.deb
-dpkg -i /tmp/atom.deb
+wget -O ./tmp/atom.deb https://github.com/atom/atom/releases/download/v1.41.0/atom-amd64.deb
+dpkg -i ./tmp/atom.deb
 sudo apt install -f
 
 pip install pycodestyle
