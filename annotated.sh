@@ -48,7 +48,7 @@ elif [[ $opt =~ ^[Qq]$ ]]; then
   echo "exiting"
   sleep 3
   exit 0
-elif [ $opt == [Bb] ]; then
+elif [[ $opt =~ ^[Bb]$ ]]; then
   ./file_backup.sh
 elif [[ $opt =~ ^[Rr]$ ]]; then
   ./file_restore.sh
