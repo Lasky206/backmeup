@@ -18,6 +18,7 @@ print_list () {
 }
 
 
+# Determin if certain packages are needed for backups
 dpkg -s atom &> /dev/null
 if [ $? == 0 ]; then TARBALL+=('~/.atom'); fi
 snap list remmina
@@ -30,20 +31,20 @@ print_list
 echo
 
 
+# Add custom backup locations
 read -r -p "Would you like to add any custom locations? [y/N]: " opt
 
 
 if [[ "$opt" =~ ^[Yy]$ ]]; then
   read -r -p "Enter the path you'd like to add: " opt2
   TARBALL+=('test')
-  echo ${TARBALL[*]}
-  sleep 10
   ./file_backup.sh
 else
   :
 fi
 
 
+# Run Backup
 read -r -p "Ready to continue? [y/N]: " opt
 
 
