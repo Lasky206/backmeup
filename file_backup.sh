@@ -6,6 +6,7 @@ clear
 
 PWD=$(pwd)
 TARBALL=('~/Documents' '~/Pictures' '~/.ssh' '~/.certs' '/etc/NetworkManager/system-connections')
+NC='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 
@@ -45,23 +46,17 @@ while true; do
 done
 
 
-echo $PWD
-sleep 3
-
-
 # Determin location to store backup
 read -r -p "Where would you like to save the backup?: " backup_path
 cd $backup_path
-echo $PWD
-sleep 3
 tar -czf ${TARBALL[*]}
 if [ $? = 0 ]; then
   clear
-  printf "The backup ${GREEN}completed sucessfully"
+  printf "The backup ${GREEN}completed sucessfully${NC}"
   sleep 5
 else
   clear
-  printf "The backup ${RED}FAILED!"
+  printf "The backup ${RED}FAILED!${NC}"
   echo $PWD
   sleep 5
 fi
