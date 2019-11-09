@@ -4,7 +4,10 @@
 clear
 
 
+PWD=$(pwd)
 TARBALL=('~/Documents' '~/Pictures' '~/.ssh' '~/.certs' '/etc/NetworkManager/system-connections')
+RED='\033[0;31m'
+GREEN='\033[0;32m'
 
 
 print_list() {
@@ -12,60 +15,57 @@ print_list() {
   echo "TARBalling the following directories: "
   echo
   for i in ${TARBALL[*]}; do
-    echo $i
+    echo "[*]  $i"
   done
+  echo
   echo
 }
 
-#
-# ###### EXPERIMENTAL ##########
-# add_to_list() {
-#   # Add custom backup locations
-#   read -r -p "Would you like to add any custom locations? [y/N]: " opt
-#
-#
-#   if [[ "$opt" =~ ^[Yy]$ ]]; then
-#     read -r -p "Enter the path you'd like to add: " opt
-#     echo $opt
-#   else
-#     :
-#   fi
-# }
-# ##############################
-#
 
 # Determin if certain packages are needed for backups
 dpkg -s atom &> /dev/null
 if [ $? == 0 ]; then TARBALL+=('~/.atom'); fi
-snap list remmina
+snap list remmina &> /dev/null
 if [ $? == 0 ]; then TARBALL+=('~/snap/remmina/current/.local/share/remmina'); fi
 
 
 print_list
 
 
-echo
+while true; do
+  # Add custom backup locations
+  read -r -p "Would you like to add another location? [y/N]: " opt
+  if [[ "$opt" =~ ^[Yy]$ ]]; then
+    read -r -p "Enter the path you'd like to add: " opt
+    TARBALL+=(${opt})
+    print_list
+  else
+    break
+  fi
+done
 
 
-# Add custom backup locations
-read -r -p "Would you like to add any custom locations? [y/N]: " opt
+echo $PWD
+sleep 3
 
 
-if [[ "$opt" =~ ^[Yy]$ ]]; then
-  read -r -p "Enter the path you'd like to add: " opt
-  TARBALL+=('test')
-  ./file_backup.sh
+# Determin location to store backup
+read -r -p "Where would you like to save the backup?: " backup_path
+cd $backup_path
+echo $PWD
+sleep 3
+tar -czf ${TARBALL[*]}
+if [ $? = 0 ]; then
+  clear
+  printf "The backup ${GREEN}completed sucessfully"
+  sleep 5
 else
-  :
+  clear
+  printf "The backup ${RED}FAILED!"
+  echo $PWD
+  sleep 5
 fi
 
 
-# Run Backup
-read -r -p "Ready to continue? [y/N]: " opt
-
-
-if [[ "$opt" =~ ^[Yy]$ ]]; then
-  echo "continue"
-else
-  print_list
-fi
+cd $PWD
+./master.sh
