@@ -49,17 +49,17 @@ done
 # Determin location to store backup
 read -r -p "Where would you like to save the backup?: " backup_path
 cd $backup_path
-`tar -czf BMU_backup.tgz ${TARBALL[*]}`
-if [ $? = 1 ]; then
-  clear
-  printf "The backup ${GREEN}completed sucessfully${NC}"
-  sleep 5
-else
-  clear
-  printf "The backup ${RED}FAILED!${NC}"
-  echo $PWD
-  sleep 5
-fi
+`tar -czf BMU_backup.tgz ${TARBALL[*]}``
+# if [ $? = 1 ]; then
+#   clear
+#   printf "The backup ${GREEN}completed sucessfully${NC}"
+#   sleep 5
+# else
+#   clear
+#   printf "The backup ${RED}FAILED!${NC}"
+#   echo $PWD
+#   sleep 5
+# fi
 
 
 cd $PWD
