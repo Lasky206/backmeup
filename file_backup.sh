@@ -18,8 +18,6 @@ banner() {
   echo "##                                       ##"
   echo "###########################################"
   echo
-  echo "TARBalling the following directories: "
-  echo
 }
 
 print_list() {
