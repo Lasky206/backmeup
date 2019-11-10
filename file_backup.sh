@@ -50,7 +50,7 @@ done
 read -r -p "Where would you like to save the backup?: " backup_path
 cd $backup_path
 tar -czf BMU_backup.tgz ${TARBALL[*]}
-if [ $? = 1 ]; then
+if [ $? = 0 ]; then
   clear
   printf "The backup ${GREEN}completed sucessfully${NC}"
   sleep 5
