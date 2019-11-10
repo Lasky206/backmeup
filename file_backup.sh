@@ -5,7 +5,7 @@ clear
 
 
 PWD=$(pwd)
-TARBALL=('~/Documents' '~/Pictures' '~/.ssh' '~/.certs' '/etc/NetworkManager/system-connections')
+TARBALL=(~/Documents ~/Pictures ~/.ssh ~/.certs /etc/NetworkManager/system-connections)
 NC='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -25,9 +25,9 @@ print_list() {
 
 # Determin if certain packages are needed for backups
 dpkg -s atom &> /dev/null
-if [ $? == 0 ]; then TARBALL+=('~/.atom'); fi
+if [ $? == 0 ]; then TARBALL+=(~/.atom/config.cson); fi
 snap list remmina &> /dev/null
-if [ $? == 0 ]; then TARBALL+=('~/snap/remmina/current/.local/share/remmina'); fi
+if [ $? == 0 ]; then TARBALL+=(~/snap/remmina/current/.local/share/remmina); fi
 
 
 print_list
@@ -49,7 +49,7 @@ done
 # Determin location to store backup
 read -r -p "Where would you like to save the backup?: " backup_path
 cd $backup_path
-tar -czf BMU_backup.tgz "${TARBALL[*]}"
+tar -czf BMU_backup.tgz ${TARBALL[*]}
 # if [ $? = 1 ]; then
 #   clear
 #   printf "The backup ${GREEN}completed sucessfully${NC}"
