@@ -5,7 +5,7 @@ clear
 
 
 PWD=$(pwd)
-TARBALL=(~/Documents ~/Pictures ~/.ssh ~/.certs /etc/NetworkManager/system-connections)
+TARBALL=(~/Documents ~/Pictures ~/.ssh /etc/NetworkManager/system-connections)
 NC='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -21,6 +21,9 @@ print_list() {
   echo
   echo
 }
+
+
+# Determin if folders exist
 
 
 # Determin if certain packages are needed for backups
@@ -50,8 +53,6 @@ done
 read -r -p "Where would you like to save the backup?: " backup_path
 cd $backup_path
 tar -czf BMU_backup.tgz ${TARBALL[*]}
-echo $?
-sleep 5
 if [ $? = 0 ]; then
   clear
   printf "The backup ${GREEN}completed sucessfully${NC}"
