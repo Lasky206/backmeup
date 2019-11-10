@@ -10,9 +10,7 @@ NC='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 
-
-print_list() {
-  clear
+banner() {
   echo
   echo "###########################################"
   echo "##                                       ##"
@@ -20,6 +18,13 @@ print_list() {
   echo "##                                       ##"
   echo "###########################################"
   echo
+  echo "TARBalling the following directories: "
+  echo
+}
+
+print_list() {
+  clear
+  banner
   echo "TARBalling the following directories: "
   echo
   for i in ${TARBALL[*]}; do
@@ -71,10 +76,12 @@ cd $backup_path
 tar -czf BMU_backup.tgz ${TARBALL[*]}
 if [ $? = 0 ]; then
   clear
+  banner
   printf "The backup ${GREEN}completed sucessfully${NC}"
   sleep 5
 else
   clear
+  banner
   printf "The backup ${RED}FAILED!${NC}"
   sleep 5
 fi
