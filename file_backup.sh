@@ -5,7 +5,7 @@ clear
 
 
 PWD=$(pwd)
-TARBALL=(~/Documents ~/Pictures ~/.ssh /etc/NetworkManager/system-connections)
+TARBALL=()
 NC='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -13,6 +13,13 @@ GREEN='\033[0;32m'
 
 print_list() {
   clear
+  echo
+  echo "###########################################"
+  echo "##                                       ##"
+  echo "##                Backup                 ##"
+  echo "##                                       ##"
+  echo "###########################################"
+  echo
   echo "TARBalling the following directories: "
   echo
   for i in ${TARBALL[*]}; do
@@ -24,13 +31,22 @@ print_list() {
 
 
 # Determin if folders exist
-
+ls ~/Documents &> /dev/null
+if [ $? == 0 ]; then TARBALL+=(~/Documents); fi
+ls ~/Pictures &> /dev/null
+if [ $? == 0 ]; then TARBALL+=(~/Pictures); fi
+ls ~/.ssh &> /dev/null
+if [ $? == 0 ]; then TARBALL+=(~/.ssh); fi
+ls /etc/NetworkManager/system-connections &> /dev/null
+if [ $? == 0 ]; then TARBALL+=(/etc/NetworkManager/system-connections); fi
 
 # Determin if certain packages are needed for backups
 dpkg -s atom &> /dev/null
 if [ $? == 0 ]; then TARBALL+=(~/.atom/config.cson); fi
 snap list remmina &> /dev/null
 if [ $? == 0 ]; then TARBALL+=(~/snap/remmina/current/.local/share/remmina); fi
+
+
 
 
 print_list
