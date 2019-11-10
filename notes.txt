@@ -16,3 +16,10 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 printf "I ${RED}love${NC} Stack Overflow\n"
 which prints love in red.
+
+
+
+============= TO DO =============
+
+> Make banners Dynamic
+> Find ways to reduce code with functions
