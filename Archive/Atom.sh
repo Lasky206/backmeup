@@ -8,7 +8,7 @@ GREEN='\033[0;32m'
 
 wget -O ./staging/atom.deb https://github.com/atom/atom/releases/download/v1.41.0/atom-amd64.deb
 sudo dpkg -i ./staging/atom.deb
-sudo apt install -f
+sudo apt install -fy
 
 # Check to see if Python is installed
 dpkg -s Python &> /dev/null
