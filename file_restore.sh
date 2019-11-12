@@ -14,6 +14,7 @@ banner() {
 
 banner
 
+
 read -r -p "Enter the path to your backup file: " opt
 tar -xzf ${opt}/BMU_backup.tgz -C ~/
 if [ $? = 0 ]; then
