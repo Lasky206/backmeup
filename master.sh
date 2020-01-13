@@ -4,7 +4,7 @@
 clear
 
 
-ENTITIES=$(ls -1 | egrep -v "file_backup.sh|file_restore.sh|tmp|annotated.sh|notes.txt|README.md|master.sh|slave.sh")
+ENTITIES=$(ls -1 | egrep -v "file_backup.sh|file_restore.sh|tmp|annotated.sh|notes.txt|README.md|master.sh|slave.sh|Archive|staging")
 SELECTION=1
 PWD=$(pwd)
 
@@ -36,7 +36,9 @@ read -r -p "Select an entity from the above list: " opt
 
 
 if [[ `seq 1 $SELECTION` =~ $opt ]]; then
-  ./slave.sh `sed -n "${opt}p" <<< "$ENTITIES"`
+  # if [[ `sed -n "${opt}p"` ]]
+  ./`sed -n "${opt}p" <<< "$ENTITIES"`
+  sleep 10
   ./master.sh
 elif [[ $opt =~ ^[Qq]$ ]]; then
   exit 0
