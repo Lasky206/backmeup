@@ -24,6 +24,7 @@ else
   fi
 fi
 
+sudo bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
 
 pip install pycodestyle
 
@@ -31,7 +32,11 @@ apm install monokai@0.24.0
 apm install file-icons
 apm install linter
 apm install linter-ui-default
+apm install busy-signal
+apm install intentions
 apm install linter-pycodestyle
+apm install kite
+
 
 
 #Prompt for config restore
