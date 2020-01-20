@@ -28,7 +28,7 @@ fi
 pip install pycodestyle
 
 apm install monokai@0.24.0
-apm install city-lights-icons@1.1.1
+apm install file-icons
 apm install linter
 apm install linter-ui-default
 apm install linter-pycodestyle
