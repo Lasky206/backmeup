@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-./Archive/GnomeTweaks-openconnect-Remmina-Discord.sh
-./Archive/Chrome.sh
-./Archive/Displaylink-Debian.sh
-./Archive/System_Update.sh
-./Archive/Enpass.sh
-./Archive/VirtualBox.sh
+sudo ./Archive/GnomeTweaks-openconnect-Remmina-Discord.sh
+sudo ./Archive/Chrome.sh
+sudo ./Archive/Displaylink-Debian.sh
+sudo ./Archive/System_Update.sh
+sudo ./Archive/Enpass.sh
+sudo ./Archive/VirtualBox.sh
