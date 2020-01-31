@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-sudo ./Archive/GnomeTweaks-openconnect-Remmina-Discord.sh
+sudo ./Archive/Base_Tools.sh
 sudo ./Archive/Chrome.sh
 sudo ./Archive/Displaylink-Debian.sh
 sudo ./Archive/System_Update.sh
